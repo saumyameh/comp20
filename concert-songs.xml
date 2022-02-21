@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="setlist-stylesheet.css"?>
+
+<setlist>
+    <heading> Maroon 5 at Fenway Park ft. Blackbear, September 2021 </heading>
+    <song>
+        <track>Me and Ur Ghost</track>
+        <artist>Blackbear</artist>
+        <genre>Genre: Electropop</genre>
+        <released>Released: 2020</released>
+    </song>
+    <song>
+        <track>Hot Girl Bummer</track>
+        <artist>Blackbear</artist>
+        <genre>Genre: Electropop</genre>
+        <released>Released: 2019</released>
+    </song>
+    <song>
+        <track>Dirty Laundry</track>
+        <artist>Blackbear</artist>
+        <genre>Genre: Electropop</genre>
+        <released>Released: 2015</released>
+    </song>
+    <song>
+        <track>Love Somebody</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Dance-pop</genre>
+        <released>Released: 2012</released>
+    </song>
+    <song>
+        <track>Moves Like Jagger</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Disco</genre>
+        <released>Released: 2011</released>
+    </song>
+    <song>
+        <track>One More Night</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Pop</genre>
+        <released>Released: 2012</released>
+    </song>
+    <song>
+        <track>Daylight</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Soft rock</genre>
+        <released>Released: 2012</released>
+    </song>
+    <song>
+        <track>Sugar</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Funk</genre>
+        <released>Released: 2015</released>
+    </song>
+    <song>
+        <track>Memories</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Reggae pop</genre>
+        <released>Released: 2019</released>
+    </song>
+    <song>
+        <track>She Will Be Loved</track>
+        <artist>Maroon 5</artist>
+        <genre>Genre: Pop rock</genre>
+        <released>Released: 2004</released>
+    </song>
+</setlist>
