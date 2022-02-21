@@ -1,0 +1,66 @@
+setlist {
+    background-color: #dd9911;
+}
+
+heading {
+    display: inline-grid;
+    padding: 1em;
+    color: #161212;
+    font-size: 48px;
+    font-weight: 500;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+track {
+    display: inline-grid;
+    color: #161212;
+    font-size: 25px;
+    font-weight: 450;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+song {
+    padding: 10px;
+    vertical-align: middle;
+    margin: 13px;
+    width: 16%;
+    height: 250px;
+    display: inline-grid;
+    position: relative;
+    border-style: solid;
+    border-color: #161212;
+}
+
+artist {
+    margin-top: 15%;
+    display: inline-grid;
+    color: #161212;
+    font-size: 20px;
+    font-weight: 450;
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 12%;
+}
+
+genre {
+    padding-bottom: 10px;
+    display: inline-grid;
+    color: #161212;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+released {
+    padding-bottom: 10px;
+    display: inline-grid;
+    color: #161212;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: sans-serif;
+    text-align: center;
+}
+
