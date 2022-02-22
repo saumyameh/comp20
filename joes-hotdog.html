@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+    <head>
+    <meta charset="UTF-8">
+    <title>Joe's Hotdog Stand</title>
+    </head>
+
+    <style>
+    body {background-color: #f09537; text-align: center;}
+    </style>
+
+    <h1>Joe's Hotdog Stand</h1>
+    <h1>Order Summary</h1>
+
+    <script>
+        var numHotdogs, numFries, numDrinks, subtotal;
+        var discount = 0.90, MassTax = 1.0625, hotdogsPrice = 3.75, friesPrice = 2.00, drinksPrice = 1.80;
+
+        numHotdogs = prompt("How many hot dogs do you want?", "Enter a numeric value");
+        numFries = prompt("How many orders of French Fries do you want?", "Enter a numeric value");
+        numDrinks = prompt("How many drinks do you want?", "Enter a numeric value");
+
+        var hotdogs_sub = numHotdogs * hotdogsPrice;
+        var fries_sub = numFries * friesPrice;
+        var drinks_sub = numDrinks * drinksPrice, 
+
+        subtotal = hotdogs_sub + fries_sub + drinks_sub;
+        
+
+        document.write("Hotdogs: " + numHotdogs + " x $3.75 = $" + hotdogs_sub.toFixed(2) + "<br/>");
+        document.write("Fries: " + numFries + " x $2.00 = $" + fries_sub.toFixed(2) + "<br/>");
+        document.write("Drinks: " + numDrinks + " x $1.80 + $" + drinks_sub.toFixed(2) + "<br/>" + "<br/>");
+        
+      
+        document.write("Subtotal: $" + subtotal.toFixed(2) + "<br/>");
+        if (subtotal > 20.00 || subtotal == 20.00) {
+              subtotal = subtotal * discount;
+            document.write("<b>" + "Congratulations! You are eligible for our 'Joe's special' 10% discount." + "</b>" + "<br/>" + "<br/>");
+            document.write("Post-Discount Subtotal: $ " + subtotal.toFixed(2) + "<br/>");
+        }
+        
+        document.write("Massachusetts State Tax: $" + ((subtotal * MassTax) - subtotal).toFixed(2) + "<br/>" + "<br/>");
+        document.write("Total: $" + (subtotal * MassTax).toFixed(2) + "<br/>");
+    </script>
+    
+</html>
