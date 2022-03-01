@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Mass Lottery - Lucky for Life </title>
+        <style>
+            body {background-color: #3cb371}
+            h2 {font-size: 30px;}
+            h3 {font-size: 20px;}
+            p {padding: 3px; font-size: 18px;}
+            button {font-size: 15px;}
+        </style>
+    </head>
+    
+    <body>
+        <div style = 'text-align: left;'>
+            <h2> Welcome to "Lucky for Life" </h2>
+            <p> PS: The number in bold is the Lucky Ball number </p>
+        </div>
+        <div style='text-align: left;'>
+            <h3> Your Primary Pick: </h3>
+            <p id = "primary-pick"></p>
+            <h3> Your Sorted Pick: </h3>
+            <p id = "sorted-pick"> </p>
+            <h3> Winning Numbers: </h3>
+            <p> 12 15 24 35 48 <b> 3 </b> </p>
+            <h3> Your Matches: </h3>
+            <p id = "matches"> </p>
+            <h3> Does Your Lucky Ball Match?: </h3>
+            <p id = "luckyball"> </p>
+            <h3> Winnings: </h3>
+            <p id = "winnings"> </p>
+            <button onClick="window.location.reload();">Play Again</button>
+        </div>
+      
+        <script>
+            var p_pick = make_picks();
+            var luckyball = Math.floor(Math.random() * 17 + 1);
+            
+            var picks = pick_string(p_pick, luckyball);
+            document.getElementById("primary-pick").innerHTML = picks;
+            
+            p_pick.sort((a, b) => a - b);
+            
+            picks = pick_string(p_pick, luckyball);
+            document.getElementById("sorted-pick").innerHTML = picks;
+            
+            function make_picks() {
+            p_pick = [];
+            while (p_pick.length < 5) {
+            const r = Math.floor(Math.random() * 47 + 1);
+            if (p_pick.indexOf(r) === -1) {
+            p_pick.push(r);
+            }
+            }
+            return p_pick;
+            }
+            
+            function pick_string(p_pick, luckyball) {
+            print = "";
+            for (i = 0; i < p_pick.length; i++) {
+            print += p_pick.at(i) + " ";
+            }
+            print += "<b>" + luckyball + "</b>";
+            return print;
+            }
+            
+            var winnings = get_matches(p_pick);
+            document.getElementById("matches").innerHTML = winnings;
+            
+            function get_matches(p_pick) {
+            match_to_win = [12, 15, 24, 35, 48];
+            matches = 0;
+            for (i = 0; i < 5; i++) {
+            if (p_pick.indexOf(match_to_win.at(i)) != -1) {
+            matches += 1;
+            }
+            }
+            return matches;
+            }  
+            
+            if (matches == 0 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$4";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 0 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$0";
+              document.getElementById("luckyball").innerHTML = "No. Sorry!";
+            }
+            if (matches == 1 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$6";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 1 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$0";
+              document.getElementById("luckyball").innerHTML = "No. Sorry!";
+            }
+            if (matches == 2 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$25";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 2 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$3";
+              document.getElementById("luckyball").innerHTML = "No. Sorry!";
+            }
+            if (matches == 3 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$150";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 3 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$20";
+              document.getElementById("luckyball").innerHTML = "No. Sorry!";
+            }
+            if (matches == 4 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$5,000";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 4 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$200";
+              document.getElementById("luckyball").innerHTML = "No. Sorry!";
+            }
+            if (matches == 5 && luckyball == 3)
+            {
+              document.getElementById("winnings").innerHTML = "$7,000 a WEEK for LIFE";
+              document.getElementById("luckyball").innerHTML = "Yes. Congrats!";
+            }
+            if (matches == 5 && luckyball != 3)
+            {
+              document.getElementById("winnings").innerHTML = "$25,000 a YEAR for LIFE";
+              document.getElementById("luckyball").innerHTML = "No";
+            }
+        </script>
+    </body>
+</html>
