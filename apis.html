@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Find My US City & State</title>
+</head>
+<style> 
+    body {
+    background-color: #e9c766;
+    }
+    .button {
+    background-color: #c19a6b; 
+    border: inset;
+    color: black;
+    padding: 4px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    cursor: all-scroll;
+    }
+</style>
+<body>
+    <div>
+    <h2> Find My US City & State </h2>
+    <h3> Enter a valid 5-digit US Zip Code below </h3>
+    <input id="text">
+    <div class= "button" id="button" onclick="zipcode()">Click to Reveal US City + State</div>
+    <h1 id="findzip"></h1>
+    <p> Professor DiOrio had stated Zippopotam.us as one of the examples in the slideshow when we learned AJAX, but she did not dwell on it much in class, so I decided to explore it myself. 
+      It is cited <a href="https://api.zippopotam.us/">here.</a>
+    <br><br>
+     I used an API option that uses the zip code, made an AJAX request, picking the keys representing the city and state abbreviation. 
+    <br><br>
+     This already seems like a very useful API based only on its utility with zip code information to reveal city and state information. 
+     I believe this API could be utilized effectively on UberEats, where entering your zip code reveals which city you are in and allows 
+     the service to locate the restaurants that deliver in your area. Another useful application of this API would be on Amazon, to reveal whether
+     the zip code you are requesting a delivery to falls within the radius of Amazon's capabilities. A third application, which I thought of 
+     with reference to my midterm project, is that for SteerMyEvent, entering your zip code could match you to the venues that are present 
+     in your area for reservation, and show you information only about them instead of exposing you to unnecessary data about tens of other 
+     venues. </p>
+     </div>
+</body>
+
+<script>
+var info;
+function zipcode() {
+    let zip = document.getElementById("text").value;
+    zip = zip.replace(/\Z/,"");
+    if (zip.length != 5){
+        document.getElementById("findzip").innerHTML = "Enter A Valid US Zip Code";
+        return;
+    }
+    // follow the AJAX data pattern to request the API and retrieve the 2 desired data points
+    let api = "https://api.zippopotam.us/us/".concat(zip);
+    var request = new XMLHttpRequest();
+    // open file at remote location
+    request.open("GET", api, true);
+ 
+    request.onreadystatechange = function() {
+        console.log("3: event fired.");
+        if (request.readyState == 4 && request.status == 200) {
+          // when we get the json data, parse it and use it
+            result = request.responseText;
+            info = JSON.parse(result);
+            display();
+        }
+        else if (request.readyState == 4 && request.status != 200) {
+            document.getElementById("findzip").innerHTML = "Something went wrong. Check your zip code and try again.";
+        }
+    }
+    request.send();  
+}
+     function display(){
+     document.getElementById("findzip").innerHTML = info.places[0]["place name"] + ", ";
+     document.getElementById("findzip").innerHTML += info.places[0]["state abbreviation"];
+}
+</script>
+</html>
