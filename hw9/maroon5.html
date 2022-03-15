@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Song List</title>
+    </head>
+    
+    <style>
+    .table {
+    text-align: center;
+    background-color: #ddaa88;
+    color: #4c2d1e;
+    }
+    
+    .table_header {
+    font-size: 15px;
+    text-decoration: underline;
+    color: #4c2d1e;
+    }
+    
+    .button {
+    background-color: #4c2d1e; 
+    border: none;
+    color: white;
+    padding: 9px 27px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 2px 2px;
+    cursor: all-scroll;
+    }
+    
+    body {
+    background-color: #ffe5e5;
+    }
+   </style>
+   
+    <body>
+    <script>
+    
+    // JSON setlist data
+    document.addEventListener("DOMContentLoaded", () => {
+      
+    let setlist = [
+      {
+        "title": "Love Somebody",
+        "artist": "Maroon 5",
+        "genre": "Pop",
+        "year": 2012
+      },
+      {
+        "title": "Moves Like Jagger",
+        "artist": "Maroon 5",
+        "genre": "Disco",
+        "year": 2011,
+      },
+      {
+        "title": "One More Night",
+        "artist": "Maroon 5",
+        "genre": "Pop",
+        "year": 2012,
+      },
+      {
+        "title": "Daylight",
+        "artist": "Maroon 5",
+        "genre": "Pop",
+        "year": 2012,
+      },
+      {
+        "title": "Sugar",
+        "artist": "Maroon 5",
+        "genre": "Pop",
+        "year": 2015,
+      },
+      {
+        "title": "Memories",
+        "artist": "Maroon 5",
+        "genre": "Pop",
+        "year": 2019,
+      },
+      {
+        "title": "She Will Be Loved",
+        "artist": "Maroon 5",
+        "genre": "Slow rock",
+        "year": 2004,
+      },
+      {
+        "title": "Me & Ur Ghost",
+        "artist": "Blackbear",
+        "genre": "Electropop",
+        "year": 2020,
+      },
+      {
+        "title": "Hot Girl Bummer",
+        "artist": "Blackbear",
+        "genre": "Electropop",
+        "year": 2019,
+      },
+      {
+        "title": "Dirty Laundry",
+        "artist": "Blackbear",
+        "genre": "Electropop",
+        "year": 2015,
+      }
+    ];
+    
+    // serialize and display data
+    for (i = 0; i < setlist.length; i++) { 
+        serialized = JSON.stringify(setlist[i]);
+        document.getElementById("songs_data").innerHTML += serialized + "<br\>";
+    }
+    
+        var str_setlist = JSON.stringify(setlist);
+        var json_setlist = JSON.parse(str_setlist);
+        
+    // the display should be user-friendly
+    function displayColTitles() {
+        s = "<table class='table'>";
+        s += "<tr class='table_header'>";
+        s += "<th><b>Title</b></th>";
+        s += "<th><b>Artist</b></th>";
+        s += "<th><b>Genre</b></th>";
+        s += "<th><b>Released</b></th>";
+        s += "</tr>";
+        return s;
+        }
+
+    function displaySong(x) {
+        s = "";
+        s += "<tr>";
+        s += "<th>" + json_setlist[x].title + "</th>";
+        s += "<th>" + json_setlist[x].artist + "</th>";
+        s += "<th>" + json_setlist[x].genre + "</th>";
+        s += "<th>" + json_setlist[x].year + "</th>";
+        s += "</tr>";
+        return s;
+        }
+        
+    function displayAll() {
+        songs = displayColTitles();
+        for (x in json_setlist)
+            songs += displaySong(x);
+            document.getElementById("display").innerHTML = songs;
+        }
+        displayAll();        
+
+    // filter
+    document.querySelector("#filter").addEventListener("click", function() {
+        var selection = document.querySelector("#selection").value;
+        songs = displayColTitles();
+        if (selection == "All") {
+            for (x in json_setlist)
+                songs += displaySong(x);
+           } else {
+                for (x in json_setlist) {
+                    if (selection == json_setlist[x].genre) {
+                        songs += displaySong(x);
+                    }
+                }
+            }
+        document.getElementById("display").innerHTML = songs;
+        });
+
+        document.querySelector("#all_genres").addEventListener("click", function() {displayAll();});
+    })
+
+    </script>
+    
+    <div>
+    <h2> Maroon 5 in Boston, Sept 2020 </h2>
+    <h3>Serialized Data</h3>
+    <p id="songs_data"></p>
+    </div>
+  
+    <div>
+    <form id="form">
+    <h3>Genre Filter</h3>
+            <select name="Genres" id="selection">
+            <option value="All">All</option>
+            <option value="Pop">Pop</option>
+            <option value="Disco">Disco</option>
+            <option value="Slow rock">Slow rock</option>
+            <option value="Electropop">Electropop</option>
+            </select>
+            <br><br>
+            <div class="button" id="filter">Filter Data</div><br><br>
+            <div class="button" id="all_genres">Show All Genres</div>
+            <br><br>
+            <div id="display"></div>
+        </form>
+    </div>
+  
+   </body>
+</html>
