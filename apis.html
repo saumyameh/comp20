@@ -40,10 +40,13 @@
      with reference to my midterm project, is that for SteerMyEvent, entering your zip code could match you to the venues that are present 
      in your area for reservation, and show you information only about them instead of exposing you to unnecessary data about tens of other 
      venues. </p>
+     <p> Below is an example call made for Medford through the API. This was done using fetch. </p>
+     <div id="fetch"></div>
      </div>
 </body>
 
 <script>
+
 var info;
 function zipcode() {
     let zip = document.getElementById("text").value;
@@ -72,9 +75,20 @@ function zipcode() {
     }
     request.send();  
 }
-     function display(){
+// function fetchAPI(){
+//   let res = fetch("https://api.zippopotam.us/us/02155");
+//   .then(res => res.text())
+//   .then(data => {
+//     data = JSON.parse(data)
+//     document.getElementById("fetch").innerHTML = data;
+// 
+//   })
+//   .catch(error => console.log(error))
+// }
+function display(){
      document.getElementById("findzip").innerHTML = info.places[0]["place name"] + ", ";
-     document.getElementById("findzip").innerHTML += info.places[0]["state abbreviation"];
+     document.getElementById("findzip").innerHTML += info.places[0]["state abbreviation"]; 
+     // fetchAPI();
 }
 </script>
 </html>
